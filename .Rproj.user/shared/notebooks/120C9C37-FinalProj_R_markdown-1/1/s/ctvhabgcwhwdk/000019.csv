@@ -1,0 +1,6 @@
+"0",""
+"0","here::i_am(""report/FinalProj_R_markdown-1.Rmd"")"
+"0","med <- readr::read_csv("
+"0","  file = here::here(""data"",""medical_cost.csv"")"
+"0",")"
+"0",""

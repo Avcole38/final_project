@@ -1,0 +1,4 @@
+"0","ggplot(med,aes(smoker, charges, fill = smoker))+"
+"0","  geom_boxplot()+"
+"0","  labs(x='Smoker', y= '$ Charges' )+ "
+"0","ggtitle('Medical Charges Based on Smoking Habits ')"

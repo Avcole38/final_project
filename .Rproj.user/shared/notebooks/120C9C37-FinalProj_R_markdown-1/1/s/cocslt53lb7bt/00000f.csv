@@ -1,0 +1,6 @@
+"0","library(ggplot2)"
+"0","ggplot(med,aes(bmi,charges,smoker))+ "
+"0","geom_point(position = ""jitter"", size=0.5,color='blue',alpha=0.3)+"
+"0","labs(x='BMI', y='$ Charged')+"
+"0","ggtitle('Medical Charges Based on BMI')"
+"0",""

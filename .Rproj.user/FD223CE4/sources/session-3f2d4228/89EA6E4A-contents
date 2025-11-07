@@ -1,0 +1,87 @@
+---
+title: "Final Project_Medical_costs"
+author: "Averrie Coleman"
+date: "10/1/25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(here)
+library(readr)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message= FALSE,
+  warning=FALSE
+  )
+
+```
+
+## Introduction 
+
+This dataset looks at the cost of medical insurance based upon several different factors. These variables include age, sex, BMI, number of children, smoking status, and residential region in the US. For this assignment, I will be looking at the correlation between BMI and medical charges and seeing if these factors  influence lower or higher medical costs.
+
+```{r med}
+
+here::i_am("report/FinalProj_R_markdown-1.Rmd")
+med <- readr::read_csv(
+  file = here::here("data","medical_cost.csv")
+)
+
+```
+## Table 1 
+```{r}
+library(dplyr)
+library(gt)
+
+summary_table <- med %>%
+  group_by(smoker) %>%
+   summarise(
+    count = n(),
+    mean_charges = mean(charges, na.rm = TRUE),
+    median_charges = median(charges, na.rm = TRUE),
+    mean_bmi = mean(bmi, na.rm = TRUE),
+    median_bmi = median(bmi, na.rm = TRUE),
+    
+)
+summary_table %>% 
+select(smoker, mean_charges, mean_bmi,count) %>% 
+gt() %>% 
+  cols_label( 
+    mean_charges = '$ Charged',
+   mean_bmi= 'BMI',
+    smoker= 'Smoker Status',
+ count= 'Number of pepople'
+   )%>% 
+tab_header(
+  title= 'Summary Table of Medical Charges Differing based on BMI and Smoker Status')
+```
+
+
+## Graph 1 : Medical Charges vs. BMI
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(med,aes(bmi,charges,smoker))+ 
+geom_point(position = "jitter", size=0.5,color='blue',alpha=0.3)+
+labs(x='BMI', y='$ Charged')+
+ggtitle('Medical Charges Based on BMI')
+
+```
+
+
+This scatterplot shows the relationship between patient BMI and medical charges incured. While there is a wide spread in charges across all BMI levels, individuals with higher BMIs (typically those above 30) appear more likely to incur higher medical costs, however, there are several outliers with extremely high charges. This helps us determine that BMI alone does not indicate higher medical costs but a BMI >30 could possibly increase the likelihood of a more costly medical intervention.
+
+
+
+## Graph 2: Smoking Habits vs. Age 
+```{r, echo = FALSE}
+ggplot(med,aes(smoker, charges, fill = smoker))+
+  geom_boxplot()+
+  labs(x='Smoker', y= '$ Charges' )+ 
+ggtitle('Medical Charges Based on Smoking Habits ')
+```
+
+
+This boxplot is comparing the relationship between smoking habits and medical charges.The boxplot shows that medical charges are generally much higher among smokers compared to non-smokers, with smokers having a higher median cost and a wider spread of charges. While most non-smokers incur lower charges. There are several outliers where costs are also very high for non smokers. This pattern suggests that smoking is associated with greater and more variable medical expenses, but it does not necessarily mean that smoking directly causes lower or higher health costs in every case.
+
