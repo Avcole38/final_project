@@ -9,3 +9,7 @@ report/final_report.html: report/FinalProj_R_markdown-1.Rmd data/medical_cost.cs
 
 clean:
 	rm -f report/final_report.html
+	
+install:
+	@echo "Restoring renv package environment..."
+	Rscript -e "renv::restore()"

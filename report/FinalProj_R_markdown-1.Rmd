@@ -74,7 +74,7 @@ This scatterplot shows the relationship between patient BMI and medical charges 
 
 
 
-## Graph 2: Smoking Habits vs. Age 
+## Graph 2: Smoking Habits vs.Charges 
 ```{r, echo = FALSE}
 ggplot(med,aes(smoker, charges, fill = smoker))+
   geom_boxplot()+
