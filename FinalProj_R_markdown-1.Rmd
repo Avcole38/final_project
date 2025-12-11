@@ -1,7 +1,7 @@
 ---
-title: "Final Project_Medical_costs"
+title: "Final Project Medical Costs"
 author: "Averrie Coleman"
-date: "10/1/25"
+date: "12/10/25"
 output: html_document
 ---
 
@@ -23,18 +23,17 @@ This dataset looks at the cost of medical insurance based upon several different
 
 ```{r med}
 
-here::i_am("FinalProj_R_markdown-1.Rmd")
-med <- readr::read_csv(
-  file = here::here("data","medical_cost.csv")
-)
+here::i_am("report/FinalProj_R_markdown-1.Rmd")
+cleaned <- readRDS("data/clean_data.rds")
+
 
 ```
-## Table 1 
+## Summary Table
 ```{r}
 library(dplyr)
 library(gt)
 
-Summary_table <- med %>%
+Summary_table <- cleaned %>%
   group_by(smoker) %>%
    summarise(
     count = n(),
@@ -62,7 +61,7 @@ tab_header(
 
 ```{r, echo=FALSE}
 library(ggplot2)
-ggplot(med,aes(bmi,charges,smoker))+ 
+ggplot(cleaned,aes(bmi,charges,smoker))+ 
 geom_point(position = "jitter", size=0.5,color='blue',alpha=0.3)+
 labs(x='BMI', y='$ Charged')+
 ggtitle('Medical Charges Based on BMI')
@@ -76,7 +75,7 @@ This scatterplot shows the relationship between patient BMI and medical charges 
 
 ## Graph 2: Smoking Habits vs.Charges 
 ```{r, echo = FALSE}
-ggplot(med,aes(smoker, charges, fill = smoker))+
+ggplot(cleaned,aes(smoker, charges, fill = smoker))+
   geom_boxplot()+
   labs(x='Smoker', y= '$ Charges' )+ 
 ggtitle('Medical Charges Based on Smoking Habits ')
