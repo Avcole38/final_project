@@ -1,18 +1,18 @@
 
 # Final Project: Medical Insurance Cost Analysis 
 
-#Overview:
+# Overview:
 #This project analyzes the *Medical Insurance Costs Dataset* from Kaggle to understand how individual characteristics influence medical insurance charges.  
 The analysis focuses on the following variables:Smoking status,Age,BMI,Region, Number of children 
 The goal is to identify which variables are most strongly associated with higher insurance costs.
 This project is fully reproducible using **Docker**, and **Makefile**, allowing anyone to regenerate the final report exactly as it was created.
 
-#Contents
+# Contents
 Summary table 
 graph 1= Medical Charges Based on BMI
 graph 2= Medical Charges Based on Smoking Habits 
 
-#Open Docker 
+# Open Docker 
 open Docker on desktop and login 
 
 # Fork and Clone 
@@ -21,7 +21,7 @@ https://github.com/Avcole38/final_project.git
 Then clone your fork by entering git clone (your SSH URL) into the terminal
 
 
-#Workflow 
+# Workflow 
 This project follows a reproducible analysis pipeline:
 1. **00_clean_data.R** – Cleans the raw dataset and saves it to `/data`.
 2. **01_make_tables.R** – Creates summary table of dataset in `/tables`.
@@ -29,14 +29,15 @@ This project follows a reproducible analysis pipeline:
 4. **03_render_report.R** – Renders the final HTML report located in `/report`.
 These scripts are automatically executed inside the Docker container when `make docker-run` is run.
 
-#make file
+# make file
 The Makefile automates the entire data analysis workflow so the project can be reproduced with a single command.
 
-#dockerfile 
+# dockerfile 
 The Dockerfile defines a consistent and portable R environment containing all necessary packages for this project.
 
-#Build docker image in terminal 
-**make docker-run**
+# Build docker image in terminal
+docker build -t acoleman38/final_project .
+make docker-run**make docker-run**
 
 =======
 
