@@ -29,6 +29,7 @@ This project follows a reproducible analysis pipeline:
 4. **03_render_report.R** – Renders the final HTML report located in `/report`.
 These scripts are automatically executed inside the Docker container when `make docker-run` is run.
 
+
 # Make file
 The Makefile automates the entire data analysis workflow so the project can be reproduced with a single command.
 
@@ -36,8 +37,8 @@ The Makefile automates the entire data analysis workflow so the project can be r
 The docker image for this project is here : 
  https://hub.docker.com/r/acoleman38/finalproj
 
-# Build docker image 
-docker build -t acoleman38/final_project .
+# Build docker image locally  
+docker build -t acoleman38/finalproj .
 
 # Run project 
 **make docker-run**
