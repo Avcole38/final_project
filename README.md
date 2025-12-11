@@ -32,8 +32,9 @@ These scripts are automatically executed inside the Docker container when `make 
 # Make file
 The Makefile automates the entire data analysis workflow so the project can be reproduced with a single command.
 
-# Dockerfile 
-The Dockerfile defines a consistent and portable R environment containing all necessary packages for this project.
+# Docker Image 
+The docker image for this project is here : 
+ https://hub.docker.com/r/acoleman38/finalproj
 
 # Build docker image 
 docker build -t acoleman38/final_project .
