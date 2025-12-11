@@ -35,9 +35,11 @@ The Makefile automates the entire data analysis workflow so the project can be r
 # Dockerfile 
 The Dockerfile defines a consistent and portable R environment containing all necessary packages for this project.
 
-# Build docker image in terminal
+# Build docker image 
 docker build -t acoleman38/final_project .
-make docker-run**make docker-run**
+
+# Run project 
+**make docker-run**
 
 =======
 
